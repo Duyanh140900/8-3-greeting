@@ -1,0 +1,154 @@
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+body {
+  margin: 0;
+  background-color: #ffe6f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Khung chứa nội dung */
+#box {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 50%;
+  min-width: 250px;
+  max-width: 600px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Bông hoa */
+#single-flower {
+  width: 80px;
+  height: auto;
+  animation: heartbeat 1.5s infinite ease-in-out;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* Khung chứa bài thơ có thể scroll */
+#poem-wrapper {
+  width: 100%;
+  max-height: 200px; /* Giới hạn chiều cao */
+  overflow-y: auto; /* Cho phép cuộn */
+  text-align: center;
+  border: 1px solid #d6336c;
+  padding: 10px;
+  border-radius: 10px;
+  background: #ffe6f2;
+}
+
+/* Bài thơ */
+#poem-container {
+  font-size: 18px;
+  color: #d6336c;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* Nút bấm */
+#start-button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  animation: heartbeat 1.5s infinite ease-in-out;
+  display: none;
+}
+
+#start-button:hover {
+  transform: scale(1.1);
+  background: linear-gradient(45deg, #ff4b2b, #ff416c);
+}
+
+.flower {
+  position: absolute;
+  width: 50px;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  animation: heartbeat 1.5s infinite ease-in-out;
+}
+
+#heart-container {
+  display: none;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 90vw; /* Giới hạn trong viewport */
+  max-height: 90vh;
+}
+
+#message {
+  position: absolute;
+  top: calc(30% + 230px); /* Căn ngay dưới trái tim */
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: bold;
+  color: #ff4081; /* Màu hồng đẹp */
+  text-align: center;
+  opacity: 1; /* Ban đầu ẩn */
+  transition: opacity 1s ease-in-out;
+  display: none;
+}
+#main-img {
+  overflow: hidden;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #heart-container {
+    width: 250px;
+    height: 250px;
+  }
+  #heart-image {
+    width: 40%;
+  }
+}
+
+#heart-image {
+  position: absolute;
+  width: 50%; /* Kích thước ảnh phù hợp với trái tim */
+  height: auto;
+  z-index: 5; /* Đảm bảo ảnh nằm trên nền nhưng dưới bông hoa */
+  opacity: 0; /* Ẩn ảnh ban đầu */
+  transition: opacity 1s ease-in-out;
+}
